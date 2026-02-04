@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_custom_accounting_root" name="Custom Accounting" sequence="10"/>
+
+    <!-- Core accounting -->
+    <menuitem id="menu_custom_accounts"
+              name="Chart of Accounts"
+              parent="menu_custom_accounting_root"
+              action="action_custom_account"
+              sequence="5"/>
+
+    <menuitem id="menu_custom_journals"
+              name="Journals"
+              parent="menu_custom_accounting_root"
+              action="action_custom_journal"
+              sequence="10"/>
+
+    <menuitem id="menu_custom_entries"
+              name="Journal Entries"
+              parent="menu_custom_accounting_root"
+              action="action_custom_move"
+              sequence="15"/>
+
+    <menuitem id="menu_trial_balance"
+              name="Trial Balance"
+              parent="menu_custom_accounting_root"
+              action="action_trial_balance"
+              sequence="60"/>
+
+    <!-- Existing features -->
+    <menuitem id="menu_custom_assets"
+              name="Assets"
+              parent="menu_custom_accounting_root"
+              action="action_custom_asset"
+              sequence="20"/>
+
+    <menuitem id="menu_custom_recurring"
+              name="Recurring Transactions"
+              parent="menu_custom_accounting_root"
+              action="action_custom_recurring"
+              sequence="30"/>
+
+    <menuitem id="menu_custom_bank"
+              name="Bank Transactions"
+              parent="menu_custom_accounting_root"
+              action="action_custom_bank"
+              sequence="40"/>
+
+    <menuitem id="menu_custom_reconcile"
+              name="Reconciliation"
+              parent="menu_custom_accounting_root"
+              action="action_custom_reconcile"
+              sequence="50"/>
+</odoo>

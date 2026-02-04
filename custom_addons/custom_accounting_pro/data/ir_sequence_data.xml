@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <!-- Batch Payment Sequence -->
+    <record id="seq_batch_payment" model="ir.sequence">
+      <field name="name">Batch Payment</field>
+      <field name="code">account.batch.payment</field>
+      <field name="prefix">BATCH/</field>
+      <field name="padding">5</field>
+      <field name="company_id" eval="False"/>
+    </record>
+
+    <!-- Payment Mandate Sequence -->
+    <record id="seq_payment_mandate" model="ir.sequence">
+      <field name="name">Payment Mandate</field>
+      <field name="code">account.payment.mandate</field>
+      <field name="prefix">MANDATE/</field>
+      <field name="padding">5</field>
+      <field name="company_id" eval="False"/>
+    </record>
+
+    <!-- Asset Sequence -->
+    <record id="seq_custom_asset" model="ir.sequence">
+      <field name="name">Custom Asset</field>
+      <field name="code">custom_accounting.asset</field>
+      <field name="prefix">AST/</field>
+      <field name="padding">5</field>
+      <field name="company_id" eval="False"/>
+    </record>
+  </data>
+</odoo>

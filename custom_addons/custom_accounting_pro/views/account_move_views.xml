@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Enhanced Invoice Form View -->
+    <record id="view_move_form_enhanced" model="ir.ui.view">
+        <field name="name">account.move.form.enhanced</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="is_credit_note" invisible="1"/>
+                <field name="amount_to_settle" widget="monetary" options="{'currency_field': 'currency_id'}" 
+                       attrs="{'invisible': [('amount_to_settle', '=', 0)]}" string="Amount to Settle"/>
+                <field name="storno_move_id" widget="many2one" options="{'no_create': True}" 
+                       attrs="{'readonly': True}" string="Storno Move"/>
+            </xpath>
+            <xpath expr="//button[@name='button_draft']" position="before">
+                <button name="action_storno" string="Storno" type="object" class="btn-secondary" 
+                        attrs="{'invisible': [('state', '!=', 'posted') or ('storno_move_id', '!=', False)]}"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_state']" position="after">
+                <field name="qr_code" widget="image" class="oe_avatar" string="QR Code"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Enhanced Invoice Tree View -->
+    <record id="view_move_tree_enhanced" model="ir.ui.view">
+        <field name="name">account.move.tree.enhanced</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="amount_to_settle" widget="monetary" string="To Settle"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

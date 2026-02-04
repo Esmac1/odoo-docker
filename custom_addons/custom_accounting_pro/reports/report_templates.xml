@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Invoice with QR Code Template -->
+    <template id="report_invoice_qr_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="header">
+                        <h2>Invoice <span t-field="o.name"/></h2>
+                        <div t-if="o.qr_code" class="qr-code">
+                            <img t-att-src="o.qr_code" style="width: 100px; height: 100px;"/>
+                            <p>Scan to Pay</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Customer:</strong>
+                            <span t-field="o.partner_id"/>
+                        </div>
+                        <div class="col-6">
+                            <strong>Date:</strong>
+                            <span t-field="o.invoice_date"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Amount Total:</strong>
+                            <span t-field="o.amount_total"/>
+                        </div>
+                        <div class="col-6">
+                            <strong>Amount Due:</strong>
+                            <span t-field="o.amount_residual"/>
+                        </div>
+                    </div>
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.invoice_line_ids" t-as="line">
+                                <td><span t-field="line.product_id"/></td>
+                                <td><span t-field="line.quantity"/></td>
+                                <td><span t-field="line.price_unit"/></td>
+                                <td><span t-field="line.price_total"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- Follow-up Report Template -->
+    <template id="report_followup_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <h2>Follow-up Report: <span t-field="o.name"/></h2>
+                    <p>Generated on: <span t-field="time.strftime('%Y-%m-%d')"/></p>
+                    
+                    <h3>Overdue Invoices</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Invoice</th>
+                                <th>Date</th>
+                                <th>Due Date</th>
+                                <th>Amount Total</th>
+                                <th>Amount Due</th>
+                                <th>Overdue Days</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.overdue_invoices" t-as="inv">
+                                <td><span t-field="inv.name"/></td>
+                                <td><span t-field="inv.invoice_date"/></td>
+                                <td><span t-field="inv.invoice_date_due"/></td>
+                                <td><span t-field="inv.amount_total"/></td>
+                                <td><span t-field="inv.amount_residual"/></td>
+                                <td>
+                                    <t t-set="overdue_days" t-value="(datetime.datetime.now().date() - inv.invoice_date_due).days"/>
+                                    <span t-esc="overdue_days"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="summary mt-3">
+                        <h4>Summary</h4>
+                        <p>Total Overdue Amount: <span t-field="o.total_overdue"/></p>
+                        <p>Number of Overdue Invoices: <span t-esc="len(o.overdue_invoices)"/></p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

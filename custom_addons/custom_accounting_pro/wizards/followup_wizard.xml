@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Follow-up Wizard Form -->
+    <record id="view_followup_wizard_form" model="ir.ui.view">
+        <field name="name">account.followup.wizard.form</field>
+        <field name="model">account.followup.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Send Customer Follow-up">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_ids" required="1" widget="many2many_tags"/>
+                            <field name="followup_type" required="1"/>
+                            <field name="overdue_invoices_only"/>
+                        </group>
+                        <group>
+                            <field name="template_id" domain="[('model', '=', 'res.partner')]"/>
+                            <field name="subject" placeholder="Follow-up Subject"/>
+                        </group>
+                    </group>
+                    <field name="body" placeholder="Enter your follow-up message here..."/>
+                </sheet>
+                <footer>
+                    <button name="action_send_followup" string="Send Follow-up" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Follow-up Wizard Action -->
+    <record id="action_followup_wizard" model="ir.actions.act_window">
+        <field name="name">Send Follow-up</field>
+        <field name="res_model">account.followup.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

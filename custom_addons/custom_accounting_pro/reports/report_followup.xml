@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="report_followup"
+        model="res.partner"
+        string="Customer Follow-up Report"
+        report_type="qweb-pdf"
+        name="custom_accounting_pro.report_followup_template"
+        file="custom_accounting_pro.report_followup_template"
+    />
+</odoo>

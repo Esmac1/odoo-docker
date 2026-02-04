@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_account_asset,custom_accounting.asset,model_custom_accounting_asset,account.group_account_user,1,1,1,0
+access_custom_account_asset_manager,custom_accounting.asset,model_custom_accounting_asset,account.group_account_manager,1,1,1,1
+access_account_budget,account.budget,model_account_budget,account.group_account_user,1,1,1,0
+access_account_budget_manager,account.budget,model_account_budget,account.group_account_manager,1,1,1,1
+access_account_budget_line,account.budget.line,model_account_budget_line,account.group_account_user,1,1,1,0
+access_account_budget_line_manager,account.budget.line,model_account_budget_line,account.group_account_manager,1,1,1,1
+access_account_batch_payment,account.batch.payment,model_account_batch_payment,account.group_account_user,1,1,1,0
+access_account_batch_payment_manager,account.batch.payment,model_account_batch_payment,account.group_account_manager,1,1,1,1
+access_account_payment_mandate,account.payment.mandate,model_account_payment_mandate,account.group_account_user,1,1,1,0
+access_account_payment_mandate_manager,account.payment.mandate,model_account_payment_mandate,account.group_account_manager,1,1,1,1
+access_batch_payment_wizard,account.batch.payment.wizard,model_account_batch_payment_wizard,account.group_account_user,1,0,1,0
+access_followup_wizard,account.followup.wizard,model_account_followup_wizard,account.group_account_user,1,0,1,0

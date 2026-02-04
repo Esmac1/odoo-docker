@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_accounting_pro" name="Accounting Pro" sequence="10"/>
+    <menuitem id="menu_invoices_pro" parent="menu_accounting_pro" action="account.action_move_out_invoice_type"/>
+    <menuitem id="menu_assets_pro" parent="menu_accounting_pro" action="action_custom_account_asset"/>
+    <menuitem id="menu_budgets_pro" parent="menu_accounting_pro" action="action_account_budget"/>
+    <menuitem id="menu_batch_pro" parent="menu_accounting_pro" action="action_batch_payment"/>
+    <menuitem id="menu_mandates_pro" parent="menu_accounting_pro" action="action_payment_mandate"/>
+</odoo>

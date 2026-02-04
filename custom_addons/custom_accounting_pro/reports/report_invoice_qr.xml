@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="report_invoice_qr"
+        model="account.move"
+        string="Invoice with QR Code"
+        report_type="qweb-pdf"
+        name="custom_accounting_pro.report_invoice_qr_template"
+        file="custom_accounting_pro.report_invoice_qr_template"
+    />
+</odoo>

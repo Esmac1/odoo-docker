@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Batch Payment Wizard Form -->
+    <record id="view_batch_payment_wizard_form" model="ir.ui.view">
+        <field name="name">account.batch.payment.wizard.form</field>
+        <field name="model">account.batch.payment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create Batch Payment">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="journal_id" required="1"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <field name="payment_ids" mode="tree">
+                        <tree string="Selected Payments" editable="bottom">
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="amount"/>
+                            <field name="currency_id"/>
+                        </tree>
+                    </field>
+                </sheet>
+                <footer>
+                    <button name="action_create_batch" string="Create Batch Payment" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Batch Payment Wizard Action -->
+    <record id="action_batch_payment_wizard" model="ir.actions.act_window">
+        <field name="name">Create Batch Payment</field>
+        <field name="res_model">account.batch.payment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
